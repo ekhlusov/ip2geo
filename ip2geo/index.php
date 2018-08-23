@@ -10,12 +10,12 @@ spl_autoload_register(function ($className) {
  * Init
  */
 if (isset($_GET['ip'])) {
-	header('Content-Type: application/json');
+    header('Content-Type: application/json');
 
-	$geo = new GeoIP($_GET['ip']);
-	echo $geo->getInfo();
+    $geo = new GeoIP($_GET['ip']);
+    echo $geo->getInfo();
 } else {
-	header("Status: 404 Not Found");
-	die(json_encode(['error' => 'no ip']));
+    header("Status: 404 Not Found");
+    die(json_encode(['error' => 'no ip']));
 }
 

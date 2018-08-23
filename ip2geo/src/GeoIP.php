@@ -24,6 +24,7 @@ class GeoIP
 
     /**
      * Получаем инфо по запрошенному IP
+     *
      * @return string
      */
     public function getInfo()
@@ -47,29 +48,33 @@ class GeoIP
 
     /**
      * Проверяем, является ли параметр IP
+     *
      * @return bool
      */
-    private function validateIP() :bool
+    private function validateIP(): bool
     {
         $valid = preg_match('/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\z/', $this->ip);
         if (!$valid) {
             return false;
         }
+
         return true;
     }
 
     /**
      * Собираем нужный нам массив с данным для вывода
+     *
      * @return array
      */
-    public function geoInfoToArray() :array
+    public function geoInfoToArray(): array
     {
-        $record = (object) geoip_record_by_name($this->ip);
+        $record = (object)geoip_record_by_name($this->ip);
+
         return [
-            'latitude' 	 => $record->latitude, // Широта
+            'latitude'   => $record->latitude, // Широта
             'longitude'  => $record->longitude, // Долгота
             'coutryName' => $record->country_name,
-            'city'		 => $record->city
+            'city'       => $record->city
         ];
     }
 }

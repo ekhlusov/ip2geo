@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Обертка для Memcache
  * Cache
@@ -24,7 +25,7 @@ class Cache
      */
     public function setCache($key, $data)
     {
-        return memcache_set($this->mc, $key, $data, 0, 30*60);
+        return memcache_set($this->mc, $key, $data, 0, 30 * 60);
     }
 
     /**
